@@ -3,7 +3,6 @@ package com.abhi.spring.edu.springboot;
 import com.abhi.spring.edu.springboot.model.Book;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import javafx.application.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -116,6 +115,20 @@ public class SpringbootApplicationTests {
         assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
     }
 
+    @Test
+    public void findAll() {
+        int i = 0;
+        while (i < 10) {
+            final Book book = createRandomBook();
+            final String location = createBookAsUri(book);
+            i++;
+        }
+        final Response response = RestAssured.get(API_ROOT);
+        List<String> jsonResponse = response.jsonPath().getList("$");
+
+        System.out.println(jsonResponse.size());
+        assertTrue(jsonResponse.size() == 10);
+    }
     private Book createRandomBook() {
         Book book = new Book();
         book.setTitle(randomAlphabetic(10));
