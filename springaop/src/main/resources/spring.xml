@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Enable AspectJ style of Spring AOP -->
+    <aop:aspectj-autoproxy/>
+
+    <!-- Configure Employee Bean and initialize it -->
+    <bean name="employee" class="com.abhi.edu.spring.aop.basic.model.Employee">
+        <property name="name" value="Dummy Employee Name"></property>
+    </bean>
+
+    <!-- Configure Student Bean and initialize it -->
+    <bean name="student" class="com.abhi.edu.spring.aop.basic.model.Student">
+        <property name="name" value="Dummy Student Name"></property>
+    </bean>
+
+    <!-- Configure EmployeeService bean -->
+    <bean name="employeeService" class="com.abhi.edu.spring.aop.basic.service.EmployeeService">
+        <property name="employee" ref="employee"></property>
+    </bean>
+
+    <!-- Configure StudentService bean -->
+    <bean name="studentService" class="com.abhi.edu.spring.aop.basic.service.StudentService">
+        <property name="student" ref="student"></property>
+    </bean>
+
+    <!-- Configure Aspect Beans, without this Aspects advices wont execute -->
+    <bean name="employeeAspect" class="com.abhi.edu.spring.aop.basic.aspect.EmployeeAspect"/>
+    <bean name="employeeAspectPointcut" class="com.abhi.edu.spring.aop.basic.aspect.EmployeeAspectPointcut"/>
+    <bean name="employeeAspectJoinPoint" class="com.abhi.edu.spring.aop.basic.aspect.EmployeeAspectJoinPoint"/>
+    <bean name="employeeAfterAspect" class="com.abhi.edu.spring.aop.basic.aspect.EmployeeAfterAspect"/>
+    <bean name="employeeAroundAspect" class="com.abhi.edu.spring.aop.basic.aspect.EmployeeAroundAspect"/>
+    <bean name="employeeAnnotationAspect" class="com.abhi.edu.spring.aop.basic.aspect.EmployeeAnnotationAspect"/>
+
+    <bean name="employeeXMLConfigAspect" class="com.abhi.edu.spring.aop.basic.aspect.EmployeeXMLConfigAspect"/>
+
+    <!-- Spring AOP XML Configuration -->
+    <aop:config>
+        <!--suppress SpringFacetInspection -->
+        <aop:aspect ref="employeeXMLConfigAspect" id="employeeXMLConfigAspectID" order="1">
+            <aop:pointcut expression="execution(* com.abhi.edu.spring.aop.basic.model.Employee.getName())"
+                          id="getNamePointcut"/>
+            <aop:around method="employeeAroundAdvice" pointcut-ref="getNamePointcut" arg-names="proceedingJoinPoint"/>
+        </aop:aspect>
+    </aop:config>
+
+
+    <bean id="twitter" class="com.abhi.edu.spring.di.services.TwitterService"></bean>
+    <bean id="MyXMLApp" class="com.abhi.edu.spring.di.consumer.MyXMLApplication">
+        <property name="service" ref="twitter"></property>
+    </bean>
+
+    <!-- Scans the classpath for annotated components that will be auto-registered as Spring beans -->
+    <context:component-scan base-package="com.abhi.edu.spring.aop.methodprofiling" />
+    <!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
+    <context:annotation-config />
+
+    <!-- AOP Configuration for profiling -->
+
+    <!-- Our profiler class that we want to use to measure process time of service methods. -->
+    <bean id="profiler" class="com.abhi.edu.spring.aop.methodprofiling.core.profiler.SimpleProfiler" />
+
+    <!-- Spring AOP -->
+    <aop:config>
+        <aop:aspect ref="profiler">
+            <!-- Catch all method in the service package through AOP. -->
+            <aop:pointcut id="serviceMethod"
+                          expression="execution(* com.abhi.edu.spring.aop.methodprofiling.service.*.*(..))" />
+            <!-- For these methods use the profile named method in the profiler class we defined below. -->
+            <aop:around pointcut-ref="serviceMethod" method="profile" />
+        </aop:aspect>
+    </aop:config>
+
+</beans>
