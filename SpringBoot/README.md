@@ -1,0 +1,5 @@
+- [Learn Spring Boot](https://www.baeldung.com/spring-boot)
+- **[Spring Boot]**(https://www.baeldung.com/spring-boot-start)
+- [Spring Boot properties available.](https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html)
+- [Security with Spring](https://www.baeldung.com/security-spring)
+- [Spring Persistence Tutorial](https://www.baeldung.com/persistence-with-spring-series)
