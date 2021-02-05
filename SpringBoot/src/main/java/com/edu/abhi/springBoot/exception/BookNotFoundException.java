@@ -1,4 +1,4 @@
-package com.edu.abhi.SpringBoot.exception;
+package com.edu.abhi.springBoot.exception;
 
 public class BookNotFoundException extends RuntimeException {
   public BookNotFoundException() {

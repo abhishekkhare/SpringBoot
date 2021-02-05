@@ -1,5 +1,8 @@
 - [Learn Spring Boot](https://www.baeldung.com/spring-boot)
-- **[Spring Boot]**(https://www.baeldung.com/spring-boot-start)
+- **[Spring Boot](https://www.baeldung.com/spring-boot-start)**
+    - [The Spring @Controller and @RestController Annotations](https://www.baeldung.com/spring-controller-vs-restcontroller)
+        - **@Controller** - Classic controllers can be annotated with the @Controller annotation. This is simply a specialization of the @Component class and allows implementation classes to be autodetected through the classpath scanning. @Controller is typically used in combination with a @RequestMapping annotation used on request handling methods. The request handling method is annotated with @ResponseBody. This annotation enables automatic serialization of the return object into the HttpResponse.
+        - **@RestController** - is a specialized version of the controller. It includes the @Controller and @ResponseBody annotations and as a result, simplifies the controller implementation. Every request handling method of the controller class automatically serializes return objects into HttpResponse. 
 - [Spring Boot properties available.](https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html)
 - [Security with Spring](https://www.baeldung.com/security-spring)
 - [Spring Persistence Tutorial](https://www.baeldung.com/persistence-with-spring-series)

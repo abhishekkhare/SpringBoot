@@ -1,4 +1,4 @@
-package com.edu.abhi.SpringBoot.entity;
+package com.edu.abhi.springBoot.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

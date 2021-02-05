@@ -1,11 +1,11 @@
-package com.edu.abhi.SpringBoot;
+package com.edu.abhi.springBoot;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import com.edu.abhi.SpringBoot.entity.Book;
+import com.edu.abhi.springBoot.entity.Book;
 import java.util.List;
 
 import org.junit.Test;

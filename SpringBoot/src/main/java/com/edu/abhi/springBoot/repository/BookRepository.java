@@ -1,6 +1,6 @@
-package com.edu.abhi.SpringBoot.repository;
+package com.edu.abhi.springBoot.repository;
 
-import com.edu.abhi.SpringBoot.entity.Book;
+import com.edu.abhi.springBoot.entity.Book;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 

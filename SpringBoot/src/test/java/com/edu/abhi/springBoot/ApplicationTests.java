@@ -1,4 +1,4 @@
-package com.edu.abhi.SpringBoot;
+package com.edu.abhi.springBoot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

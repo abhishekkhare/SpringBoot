@@ -1,4 +1,4 @@
-package com.edu.abhi.SpringBoot.exception;
+package com.edu.abhi.springBoot.exception;
 
 public class BookIdMismatchException extends RuntimeException {
   public BookIdMismatchException() {

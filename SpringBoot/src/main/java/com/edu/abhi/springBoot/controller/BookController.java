@@ -1,9 +1,9 @@
-package com.edu.abhi.SpringBoot.controller;
+package com.edu.abhi.springBoot.controller;
 
-import com.edu.abhi.SpringBoot.entity.Book;
-import com.edu.abhi.SpringBoot.exception.BookIdMismatchException;
-import com.edu.abhi.SpringBoot.exception.BookNotFoundException;
-import com.edu.abhi.SpringBoot.repository.BookRepository;
+import com.edu.abhi.springBoot.entity.Book;
+import com.edu.abhi.springBoot.exception.BookIdMismatchException;
+import com.edu.abhi.springBoot.exception.BookNotFoundException;
+import com.edu.abhi.springBoot.repository.BookRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

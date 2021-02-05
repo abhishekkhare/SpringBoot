@@ -1,4 +1,4 @@
-package com.edu.abhi.SpringBoot.exception;
+package com.edu.abhi.springBoot.exception;
 
 import javax.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;

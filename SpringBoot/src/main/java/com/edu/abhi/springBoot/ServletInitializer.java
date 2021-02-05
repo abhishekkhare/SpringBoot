@@ -1,4 +1,4 @@
-package com.edu.abhi.SpringBoot;
+package com.edu.abhi.springBoot;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
